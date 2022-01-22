@@ -1,5 +1,10 @@
 package org.gentTour.genTour.model;
 
+/*
+ * @author Guilherme Barbosa Rodrigues
+ * @since 21/01/2022
+ * @version 0.00
+  */
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
