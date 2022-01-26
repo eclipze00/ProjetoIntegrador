@@ -24,11 +24,11 @@ public interface TiposRepository extends JpaRepository<Tipos, Long> {
 	 */
 	public List<Tipos> findAllByLocalContainingIgnoreCase(String local);
 	
-<<<<<<< HEAD
-	public List<Tipos> findAllByTipoTurismoContainingIgnoreCase (String tipoTurismo);
-}
-=======
+
+	public List<Tipos> findAllByTipoTrurismoContainingIgnoreCase(String tipoTurismo);
+
+	
 	public List<Tipos> findAllByTemporadaContainingIgnoreCase(String temporada);
 
 }
->>>>>>> 5f38518fc0b53e1cecac383a75b30ec76d8b0b62
+
