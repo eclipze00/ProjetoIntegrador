@@ -6,6 +6,12 @@ package org.gentTour.genTour.controller;
  * @version 0.02
   */
 
+/*
+ * @author Guilherme Barbosa Rodrigues
+ * @since 26/01/2022
+ * @version 0.03
+ */
+
 import java.util.List;
 
 import org.gentTour.genTour.TiposRepository.TiposRepository;
@@ -36,7 +42,7 @@ public class tiposController {
 		return ResponseEntity.ok(repository.findAll());
 	}
 
-	@GetMapping("/tipo/{id}") // Pesquisa para ADMIN caso precisar de Hotfix.
+	@GetMapping("/=/{id}") // Pesquisa para ADMIN caso precisar de Hotfix.
 	public ResponseEntity<Tipos> findByTipoTurismo(@PathVariable(value = "id") long id) {
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.status(200).body(resp))
@@ -48,6 +54,16 @@ public class tiposController {
 	@GetMapping("/tipo/{tipoTurismo}") // Pesquisa por tipo 
 	public ResponseEntity<List<Tipos>> GetByTipoTurismo(@PathVariable String tipoTurismo){
 		return ResponseEntity.ok(repository.findAllByTipoTurismoContainingIgnoreCase(tipoTurismo));
+	}
+	
+	@GetMapping("/tipo/{local}") // Pesquisa por Local
+	public ResponseEntity<List<Tipos>> GetByLocal(@PathVariable String local){
+		return ResponseEntity.ok(repository.findAllByLocalContainingIgnoreCase(local));
+	}
+	
+	@GetMapping("/tipo/{temporada}") // Pesquisa por Temporada 
+	public ResponseEntity<List<Tipos>> GetByTemporada(@PathVariable String temporada){
+		return ResponseEntity.ok(repository.findAllByTemporadaContainingIgnoreCase(temporada));
 	}
 
 	
