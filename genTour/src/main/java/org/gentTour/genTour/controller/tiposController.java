@@ -70,7 +70,8 @@ public class tiposController {
 	@DeleteMapping("/{id}")
 	public void deleteTipos (@PathVariable long id) {
 		repository.deleteById(id);
-		}
+	}
+	
 }
 
 
