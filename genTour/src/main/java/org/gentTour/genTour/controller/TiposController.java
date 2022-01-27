@@ -14,8 +14,8 @@ package org.gentTour.genTour.controller;
 
 import java.util.List;
 
-import org.gentTour.genTour.TiposRepository.TiposRepository;
 import org.gentTour.genTour.model.Tipos;
+import org.gentTour.genTour.repository.TiposRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +33,7 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 @RequestMapping("/tipo") // Tipos de Turismo
 @CrossOrigin("*")
-public class tiposController {
+public class TiposController {
 	@Autowired
 	private TiposRepository repository;
 
