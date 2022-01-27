@@ -1,4 +1,4 @@
-package org.gentTour.genTour.TiposRepository;
+package org.gentTour.genTour.repository;
 
 import java.util.List;
 
