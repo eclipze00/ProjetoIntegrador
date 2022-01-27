@@ -1,10 +1,9 @@
 package org.gentTour.genTour.controller;
-/*
- * 
+/* 
  * @author Júlia Inoscência O. dos Santos
  * @since 22/01/2022
  * @version 0.02
-  */
+ */
 
 /*
  * @author Guilherme Barbosa Rodrigues
