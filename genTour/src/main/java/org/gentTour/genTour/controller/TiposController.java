@@ -42,7 +42,7 @@ public class TiposController {
 		return ResponseEntity.ok(repository.findAll());
 	}
 
-	@GetMapping("/=/{id}") // Pesquisa para ADMIN caso precisar de Hotfix.
+	@GetMapping("/{id}") // Pesquisa para ADMIN caso precisar de Hotfix.
 	public ResponseEntity<Tipos> findByTipoTurismo(@PathVariable(value = "id") long id) {
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.status(200).body(resp))
