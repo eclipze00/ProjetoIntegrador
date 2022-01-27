@@ -1,5 +1,9 @@
 package org.gentTour.genTour.controller;
-
+/* 
+* @author Júlia Inoscência O. dos Santos
+* @since 27/01/2022
+* @version 0.05
+*/
 import java.util.List;
 
 import org.gentTour.genTour.model.Usuario;
