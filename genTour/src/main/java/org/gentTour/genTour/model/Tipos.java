@@ -1,5 +1,8 @@
 package org.gentTour.genTour.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 /*
  * @author Guilherme Barbosa Rodrigues
  * @since 21/01/2022
@@ -11,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -41,6 +45,10 @@ public class Tipos {
 	@ManyToOne
 	@JsonIgnoreProperties("tipos")
 	private Usuario usuario;
+	
+	@OneToMany(mappedBy = "tipos", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("tipos")
+	private List<Turismo>turismo;
 
 	public long getId() {
 		return id;
