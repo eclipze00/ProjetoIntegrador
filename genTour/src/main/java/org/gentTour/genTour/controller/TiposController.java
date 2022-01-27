@@ -13,8 +13,8 @@ package org.gentTour.genTour.controller;
 
 import java.util.List;
 
-import org.gentTour.genTour.TiposRepository.TiposRepository;
 import org.gentTour.genTour.model.Tipos;
+import org.gentTour.genTour.repository.TiposRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +32,7 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 @RequestMapping("/tipo") // Tipos de Turismo
 @CrossOrigin("*")
-public class tiposController {
+public class TiposController {
 	@Autowired
 	private TiposRepository repository;
 
@@ -41,7 +41,7 @@ public class tiposController {
 		return ResponseEntity.ok(repository.findAll());
 	}
 
-	@GetMapping("/=/{id}") // Pesquisa para ADMIN caso precisar de Hotfix.
+	@GetMapping("/{id}") // Pesquisa para ADMIN caso precisar de Hotfix.
 	public ResponseEntity<Tipos> findByTipoTurismo(@PathVariable(value = "id") long id) {
 		return repository.findById(id)
 				.map(resp -> ResponseEntity.status(200).body(resp))
@@ -85,7 +85,8 @@ public class tiposController {
 	@DeleteMapping("/{id}")
 	public void deleteTipos (@PathVariable long id) {
 		repository.deleteById(id);
-		}
+	}
+	
 }
 
 

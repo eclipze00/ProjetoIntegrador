@@ -1,10 +1,10 @@
-package org.gentTour.genTour.TiposRepository;
+package org.gentTour.genTour.repository;
 
 /*
  * @author Wesley Barreto Coelho
  * @since 22/01/2022
  * @version 0.01
-  */
+ */
 import java.util.List;
 
 import org.gentTour.genTour.model.Tipos;
@@ -22,8 +22,9 @@ public interface TiposRepository extends JpaRepository<Tipos, Long> {
 	 * @version 0.03
 	 * 
 	 */
-	public List<Tipos> findAllByLocalContainingIgnoreCase(String local);
+	public List<Tipos> findAllByLocalContainingIgnoreCase(String local);		
 	
 	public List<Tipos> findAllByTemporadaContainingIgnoreCase(String temporada);
 
 }
+
