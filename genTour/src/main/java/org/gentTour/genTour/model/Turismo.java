@@ -21,22 +21,22 @@ public class Turismo {
 	private long id;
 	
 	@NotBlank
-	@Size(min = 5, max = 100)
+	@Size(min = 3, max = 100)
 	private String hospedagem;
 	
 	@NotBlank
-	@Size(min = 5, max = 300)
+	@Size(min = 3, max = 300)
 	private String descricao;
 	
 	@NotBlank
-	@Size(min = 5, max = 200)
+	@Size(min = 3, max = 200)
 	private String atracao;
 	
 	@NotNull 
 	private double preco; 
 	
 	@NotBlank
-	@Size(min = 5, max = 100)
+	@Size(min = 3, max = 100)
 	private String locomocao;
 	
 	@ManyToOne

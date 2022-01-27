@@ -67,7 +67,7 @@ public class TurismoController {
 		return ResponseEntity.status(200).body(repository.save(turismo));
 	}
 	
-	@DeleteMapping("/update")
+	@DeleteMapping("/{id}")
 	public void deleteTurismo (@PathVariable long id) {
 		repository.deleteById(id);
 	}
