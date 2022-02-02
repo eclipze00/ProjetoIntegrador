@@ -27,7 +27,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/usuario")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
 	
 	@Autowired
@@ -35,6 +35,11 @@ public class UsuarioController {
 	
 	@Autowired UsuarioService usuarioService;
 
+	
+	/**
+	 * 
+	 * @return
+	 */
 	@GetMapping
 	public ResponseEntity<List<Usuario>> GetAll() {
 		return ResponseEntity.ok(repository.findAll());
@@ -57,18 +62,29 @@ public class UsuarioController {
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(email));
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
+	
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Usuario> saveNome (@RequestBody Usuario newUsuario) {
+	public ResponseEntity<Usuario> register (@RequestBody Usuario usuario) {
 		return ResponseEntity.status(201)
-				.body(repository.save(newUsuario));
+				.body(usuarioService.cadastrarUsuario(usuario));
+				
 	}
 	
 	@PostMapping ("/logar")
-	public ResponseEntity<UsuarioLogin> Authentication (@RequestBody Optional<UsuarioLogin> user){
-		return usuarioService.Logar(user)
+	public ResponseEntity<UsuarioLogin> login (@RequestBody Optional <UsuarioLogin> user){
+		return usuarioService.login(user)
 				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.status(401).build());
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 
 	@PutMapping("/update")
 	public ResponseEntity<Usuario> updateNome(@RequestBody Usuario nome) {
@@ -84,6 +100,11 @@ public class UsuarioController {
 	public ResponseEntity<Usuario> updateSenha(@RequestBody Usuario senha) {
 		return ResponseEntity.status(200).body(repository.save(senha));
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 
 	@DeleteMapping("/{id}")
 	public void deleteNome(@PathVariable long id) {
