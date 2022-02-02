@@ -41,6 +41,11 @@ public class Usuario {
 	@NotBlank
 	private String senha;
 	
+
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties
+	private List<Tipos> tipos;
+	
 	public List<Tipos> getTipos() {
 		return tipos;
 	}
@@ -48,10 +53,6 @@ public class Usuario {
 	public void setTipos(List<Tipos> tipos) {
 		this.tipos = tipos;
 	}
-
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties
-	private List<Tipos> tipos;
 
 	public long getId() {
 		return id;
