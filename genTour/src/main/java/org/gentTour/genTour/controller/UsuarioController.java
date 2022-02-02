@@ -5,9 +5,12 @@ package org.gentTour.genTour.controller;
 * @version 0.05
 */
 import java.util.List;
+import java.util.Optional;
 
 import org.gentTour.genTour.model.Usuario;
+import org.gentTour.genTour.model.UsuarioLogin;
 import org.gentTour.genTour.repository.UsuarioRepository;
+import org.gentTour.genTour.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +29,11 @@ import org.springframework.web.server.ResponseStatusException;
 @RequestMapping("/usuario")
 @CrossOrigin("*")
 public class UsuarioController {
+	
 	@Autowired
 	private UsuarioRepository repository;
+	
+	@Autowired UsuarioService usuarioService;
 
 	@GetMapping
 	public ResponseEntity<List<Usuario>> GetAll() {
@@ -51,9 +57,17 @@ public class UsuarioController {
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(email));
 	}
 	
-	@PostMapping("/save")
-	public ResponseEntity<Usuario> saveNome(@RequestBody Usuario newUsuario) {
-		return ResponseEntity.status(201).body(repository.save(newUsuario));
+	@PostMapping("/cadastrar")
+	public ResponseEntity<Usuario> saveNome (@RequestBody Usuario newUsuario) {
+		return ResponseEntity.status(201)
+				.body(repository.save(newUsuario));
+	}
+	
+	@PostMapping ("/logar")
+	public ResponseEntity<UsuarioLogin> Authentication (@RequestBody Optional<UsuarioLogin> user){
+		return usuarioService.Logar(user)
+				.map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.status(401).build());
 	}
 
 	@PutMapping("/update")
