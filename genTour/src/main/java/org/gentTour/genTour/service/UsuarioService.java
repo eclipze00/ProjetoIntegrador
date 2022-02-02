@@ -24,17 +24,20 @@ public class UsuarioService {
 		return usuarioRepository.save(usuario);
 	}
 	
-	public Optional<UsuarioLogin> Logar(Optional<UsuarioLogin> user){
+	public Optional<UsuarioLogin> login (Optional <UsuarioLogin> user){
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		Optional<Usuario> usuario = usuarioRepository.findAllByEmail(user.get().getUsuario());
+		Optional <Usuario> usuario = usuarioRepository.findAllByEmail(user.get().getUsuario());
+		
 		if(usuario.isPresent()) {
 			if(encoder.matches(user.get().getSenha(), usuario.get().getSenha())) {
+				
 				String auth = user.get().getUsuario()+ ":" + user.get().getSenha();
 				byte[] encoderAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
 				String authHeader = "Basic" + new String(encoderAuth);
-				user.get().setToken(authHeader);
-				user.get().setNome(usuario.get().getNome());
-				return user;
+				
+					user.get().setToken(authHeader);
+					user.get().setNome(usuario.get().getNome());
+					return user;
 			}
 		}
 		return null;
