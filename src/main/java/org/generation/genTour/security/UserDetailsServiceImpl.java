@@ -1,9 +1,9 @@
-package org.gentTour.genTour.security;
+package org.generation.genTour.security;
 
 import java.util.Optional;
 
-import org.gentTour.genTour.model.Usuario;
-import org.gentTour.genTour.repository.UsuarioRepository;
+import org.generation.genTour.model.Usuario;
+import org.generation.genTour.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

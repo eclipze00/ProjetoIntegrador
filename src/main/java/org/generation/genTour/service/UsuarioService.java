@@ -1,12 +1,12 @@
-package org.gentTour.genTour.service;
+package org.generation.genTour.service;
 
 import java.nio.charset.Charset;
 import java.util.Optional;
 
 import org.apache.commons.codec.binary.Base64;
-import org.gentTour.genTour.model.Usuario;
-import org.gentTour.genTour.model.UsuarioLogin;
-import org.gentTour.genTour.repository.UsuarioRepository;
+import org.generation.genTour.model.Usuario;
+import org.generation.genTour.model.UsuarioLogin;
+import org.generation.genTour.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

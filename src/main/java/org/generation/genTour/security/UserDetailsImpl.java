@@ -1,8 +1,8 @@
-package org.gentTour.genTour.security;
+package org.generation.genTour.security;
 
 import java.util.Collection;
 
-import org.gentTour.genTour.model.Usuario;
+import org.generation.genTour.model.Usuario;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
