@@ -1,4 +1,4 @@
-package org.gentTour.genTour.repository;
+package org.generation.genTour.repository;
 
 /*
  * @author Wesley Barreto Coelho
@@ -7,7 +7,7 @@ package org.gentTour.genTour.repository;
  */
 import java.util.List;
 
-import org.gentTour.genTour.model.Tipos;
+import org.generation.genTour.model.Tipos;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

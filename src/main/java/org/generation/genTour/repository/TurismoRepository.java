@@ -1,8 +1,8 @@
-package org.gentTour.genTour.repository;
+package org.generation.genTour.repository;
 
 import java.util.List;
 
-import org.gentTour.genTour.model.Turismo;
+import org.generation.genTour.model.Turismo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TurismoRepository extends JpaRepository<Turismo, Long>{ 
