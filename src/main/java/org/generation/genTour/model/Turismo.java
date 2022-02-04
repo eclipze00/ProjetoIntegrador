@@ -1,4 +1,4 @@
-package org.gentTour.genTour.model;
+package org.generation.genTour.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

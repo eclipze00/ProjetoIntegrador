@@ -1,4 +1,4 @@
-package org.gentTour.genTour.model;
+package org.generation.genTour.model;
 
 public class UsuarioLogin {
 	
