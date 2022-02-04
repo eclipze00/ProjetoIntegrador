@@ -7,6 +7,9 @@ package org.generation.genTour.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
+
 import org.generation.genTour.model.Usuario;
 import org.generation.genTour.model.UsuarioLogin;
 import org.generation.genTour.repository.UsuarioRepository;
@@ -23,7 +26,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
+
 
 @RestController
 @RequestMapping("/usuario")
@@ -31,84 +34,55 @@ import org.springframework.web.server.ResponseStatusException;
 public class UsuarioController {
 	
 	@Autowired
-	private UsuarioRepository repository;
+	private UsuarioService usuarioService;
 	
-	@Autowired UsuarioService usuarioService;
-
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 	
-	/**
-	 * 
-	 * @return
-	 */
-	@GetMapping
-	public ResponseEntity<List<Usuario>> GetAll() {
-		return ResponseEntity.ok(repository.findAll());
+	@GetMapping("/all")
+	public ResponseEntity <List<Usuario>> getAll(){
+		return ResponseEntity.ok(usuarioRepository.findAll());
 	}
-
+	
 	@GetMapping("/{id}")
-	public ResponseEntity<Usuario> findByNome(@PathVariable(value = "id") long id) {
-		return repository.findById(id).map(resp -> ResponseEntity.status(200).body(resp)).orElseGet(() -> {
-			throw new ResponseStatusException(HttpStatus.NO_CONTENT, "ID não Encontrado");
-		});
-	}
-
-	@GetMapping("/{nome}")
-	public ResponseEntity<List<Usuario>> getByNome(@PathVariable String nome) {
-		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
+	public ResponseEntity<Usuario> getById (@PathVariable Long id){
+		return usuarioRepository.findById(id)
+				.map(resposta -> ResponseEntity.ok(resposta))
+				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/{email}")
-	public ResponseEntity<List<Usuario>> getByEmail(@PathVariable String email) {
-		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(email));
+	@PostMapping("/logar")
+	public ResponseEntity<UsuarioLogin> login (@RequestBody Optional<UsuarioLogin> emailLogin){
+		
+		return usuarioService.login(emailLogin)
+			.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
+			.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
-	
-	/**
-	 * 
-	 * @return
-	 */
 	
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Usuario> register (@RequestBody Usuario usuario) {
-		return ResponseEntity.status(201)
-				.body(usuarioService.cadastrarUsuario(usuario));
-				
+	public ResponseEntity<Usuario> postUsuario (@Valid @RequestBody Usuario email){
+		
+		return usuarioService.cadastrarUsuario(email)
+			.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(resposta))
+			.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 	
-	@PostMapping ("/logar")
-	public ResponseEntity<UsuarioLogin> login (@RequestBody Optional <UsuarioLogin> user){
-		return usuarioService.login(user)
-				.map(resp -> ResponseEntity.ok(resp))
-				.orElse(ResponseEntity.status(401).build());
+	@PutMapping("/atualizar")
+	public ResponseEntity<Usuario> putUsuario (@Valid @RequestBody Usuario email){
+		
+		return usuarioService.atualizarUsuario(email)
+			.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(resposta))
+			.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 	
-	/**
-	 * 
-	 * @return
-	 */
-
-	@PutMapping("/update")
-	public ResponseEntity<Usuario> updateNome(@RequestBody Usuario nome) {
-		return ResponseEntity.status(200).body(repository.save(nome));
-	}
-	
-	@PutMapping("/update/email")
-	public ResponseEntity<Usuario> updateEmail(@RequestBody Usuario email) {
-		return ResponseEntity.status(200).body(repository.save(email));
-	}
-	
-	@PutMapping("/update/senha")
-	public ResponseEntity<Usuario> updateSenha(@RequestBody Usuario senha) {
-		return ResponseEntity.status(200).body(repository.save(senha));
-	}
-	
-	/**
-	 * 
-	 * @return
-	 */
-
 	@DeleteMapping("/{id}")
-	public void deleteNome(@PathVariable long id) {
-		repository.deleteById(id);
+	public ResponseEntity<?> deletePostagem (@PathVariable long id) {
+		return usuarioRepository.findById(id)
+				.map(resposta -> {
+					usuarioRepository.deleteById(id);
+					return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+				})
+				.orElse(ResponseEntity.notFound().build());
 	}
 }
 
