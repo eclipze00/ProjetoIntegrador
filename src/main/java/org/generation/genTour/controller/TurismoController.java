@@ -1,4 +1,4 @@
-package org.gentTour.genTour.controller;
+package org.generation.genTour.controller;
 
 /*
  * @author Guilherme Barbosa Rodrigues
@@ -9,8 +9,8 @@ package org.gentTour.genTour.controller;
 
 import java.util.List;
 
-import org.gentTour.genTour.model.Turismo;
-import org.gentTour.genTour.repository.TurismoRepository;
+import org.generation.genTour.model.Turismo;
+import org.generation.genTour.repository.TurismoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

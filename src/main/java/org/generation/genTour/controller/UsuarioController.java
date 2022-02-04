@@ -1,4 +1,4 @@
-package org.gentTour.genTour.controller;
+package org.generation.genTour.controller;
 /* 
 * @author Júlia Inoscência O. dos Santos
 * @since 27/01/2022
@@ -7,10 +7,10 @@ package org.gentTour.genTour.controller;
 import java.util.List;
 import java.util.Optional;
 
-import org.gentTour.genTour.model.Usuario;
-import org.gentTour.genTour.model.UsuarioLogin;
-import org.gentTour.genTour.repository.UsuarioRepository;
-import org.gentTour.genTour.service.UsuarioService;
+import org.generation.genTour.model.Usuario;
+import org.generation.genTour.model.UsuarioLogin;
+import org.generation.genTour.repository.UsuarioRepository;
+import org.generation.genTour.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
