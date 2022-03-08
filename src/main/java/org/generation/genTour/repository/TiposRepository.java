@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TiposRepository extends JpaRepository<Tipos, Long> {
 
-	public List<Tipos> findAllByTipoTurismoContainingIgnoreCase(String tipoTurismo);
+	public List<Tipos> findAllByCategoriaContainingIgnoreCase(String categoria);
 
 	/*
 	 * @author Guilherme Barbosa Rodrigues
@@ -24,7 +24,7 @@ public interface TiposRepository extends JpaRepository<Tipos, Long> {
 	 */
 	public List<Tipos> findAllByLocalContainingIgnoreCase(String local);		
 	
-	public List<Tipos> findAllByTemporadaContainingIgnoreCase(String temporada);
+	public List<Tipos> findAllByDescricaoContainingIgnoreCase(String descricao);
 
 }
 
