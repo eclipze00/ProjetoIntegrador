@@ -32,7 +32,7 @@ public class Tipos {
 	
 	@NotBlank
 	@Size(min = 5, max = 100)
-	private String tipoTurismo;
+	private String categoria;
 	
 	@NotBlank
 	@Size(min = 5, max = 100)
@@ -40,7 +40,7 @@ public class Tipos {
 	
 	@NotBlank
 	@Size(min = 5, max = 100)
-	private String temporada;
+	private String descricao;
 	
 	@ManyToOne
 	@JsonIgnoreProperties("tipos")
@@ -66,12 +66,21 @@ public class Tipos {
 		this.id = id;
 	}
 
-	public String getTipoTurismo() {
-		return tipoTurismo;
+
+	public String getCategoria() {
+		return categoria;
 	}
 
-	public void setTipoTurismo(String tipoTurismo) {
-		this.tipoTurismo = tipoTurismo;
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public List<Turismo> getTurismo() {
+		return turismo;
+	}
+
+	public void setTurismo(List<Turismo> turismo) {
+		this.turismo = turismo;
 	}
 
 	public String getLocal() {
@@ -82,12 +91,13 @@ public class Tipos {
 		this.local = local;
 	}
 
-	public String getTemporada() {
-		return temporada;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setTemporada(String temporada) {
-		this.temporada = temporada;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
+
 
 }

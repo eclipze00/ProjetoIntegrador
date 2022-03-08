@@ -22,6 +22,10 @@ public class Turismo {
 	
 	@NotBlank
 	@Size(min = 3, max = 100)
+	private String temporada;
+	
+	@NotBlank
+	@Size(min = 3, max = 100)
 	private String hospedagem;
 	
 	@NotBlank
@@ -42,6 +46,10 @@ public class Turismo {
 	@ManyToOne
 	@JsonIgnoreProperties("Turismo")
 	private Tipos tipos;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("Turismo")
+	private Usuario usuario;
 
 	public long getId() {
 		return id;
@@ -49,6 +57,14 @@ public class Turismo {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getTemporada() {
+		return temporada;
+	}
+
+	public void setTemporada(String temporada) {
+		this.temporada = temporada;
 	}
 
 	public String getHospedagem() {
@@ -75,11 +91,11 @@ public class Turismo {
 		this.atracao = atracao;
 	}
 
-	public Double getPreco() {
+	public double getPreco() {
 		return preco;
 	}
 
-	public void setPreco(Double preco) {
+	public void setPreco(double preco) {
 		this.preco = preco;
 	}
 
@@ -90,5 +106,21 @@ public class Turismo {
 	public void setLocomocao(String locomocao) {
 		this.locomocao = locomocao;
 	}
-	
+
+	public Tipos getTipos() {
+		return tipos;
+	}
+
+	public void setTipos(Tipos tipos) {
+		this.tipos = tipos;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 }
