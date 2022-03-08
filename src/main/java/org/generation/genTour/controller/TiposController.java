@@ -50,17 +50,17 @@ public class TiposController {
 		});
 	}
 	
-	@GetMapping("/tipo/{tipoTurismo}") // Pesquisa por tipo 
+	@GetMapping("/{categoria}") // Pesquisa por tipo 
 	public ResponseEntity<List<Tipos>> GetByTipoTurismo(@PathVariable String categoria){
 		return ResponseEntity.ok(repository.findAllByCategoriaContainingIgnoreCase(categoria));
 	}
 	
-	@GetMapping("/tipo/{local}") // Pesquisa por Local
+	@GetMapping("/{local}") // Pesquisa por Local
 	public ResponseEntity<List<Tipos>> GetByLocal(@PathVariable String local){
 		return ResponseEntity.ok(repository.findAllByLocalContainingIgnoreCase(local));
 	}
 	
-	@GetMapping("/tipo/{temporada}") // Pesquisa por Temporada 
+	@GetMapping("/{descricao}") // Pesquisa por Temporada 
 	public ResponseEntity<List<Tipos>> GetByTemporada(@PathVariable String descricao){
 		return ResponseEntity.ok(repository.findAllByDescricaoContainingIgnoreCase(descricao));
 	}

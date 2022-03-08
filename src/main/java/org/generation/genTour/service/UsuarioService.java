@@ -78,6 +78,7 @@ public class UsuarioService {
 				emailLogin.get()
 						.setToken(gerarBasicToken(emailLogin.get().getEmail(), emailLogin.get().getSenha()));
 				emailLogin.get().setSenha(usuario.get().getSenha());
+				emailLogin.get().setTipo(usuario.get().getTipo());
 
 				return emailLogin;
 			}
