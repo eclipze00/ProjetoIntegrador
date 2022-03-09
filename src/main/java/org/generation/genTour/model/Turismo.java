@@ -21,7 +21,7 @@ public class Turismo {
 	private long id;
 	
 	@NotBlank
-	@Size(min = 5000)
+	@Size(max = 5000)
 	private String foto;
 	
 	@NotBlank
@@ -61,6 +61,15 @@ public class Turismo {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+	
+	
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public String getTemporada() {

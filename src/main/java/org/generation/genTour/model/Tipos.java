@@ -99,5 +99,5 @@ public class Tipos {
 		this.descricao = descricao;
 	}
 
-
+	
 }
