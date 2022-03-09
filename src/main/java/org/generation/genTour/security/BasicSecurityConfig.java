@@ -2,6 +2,7 @@ package org.generation.genTour.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -36,7 +37,8 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{
 			http.authorizeHttpRequests()
 			.antMatchers("/usuario/logar").permitAll() // Acessar sem precisar de token
 			.antMatchers("/usuario/cadastrar").permitAll()// Acessar sem precisar de token
-			.antMatchers("/turismo").permitAll()// Acessar sem precisar de token
+			.antMatchers(HttpMethod.GET, "/turismo/**").permitAll()// Acessar sem precisar de token
+			.antMatchers(HttpMethod.GET, "/tipo/**").permitAll()// Acessar sem precisar de token
 			.anyRequest().authenticated() // precisa de autenticação 
 			.and().httpBasic() //  utiliza o metodo basic para gerar o token
 			.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) //Stateless não guarda seção. Indica a seção  

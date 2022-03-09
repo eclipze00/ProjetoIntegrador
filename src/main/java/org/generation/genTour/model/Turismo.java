@@ -21,6 +21,10 @@ public class Turismo {
 	private long id;
 	
 	@NotBlank
+	@Size(min = 5000)
+	private String foto;
+	
+	@NotBlank
 	@Size(min = 3, max = 100)
 	private String temporada;
 	

@@ -47,12 +47,12 @@ public class TurismoController {
 				});
 	}
 	
-	@GetMapping("/turismo/{hospedagem}")
+	@GetMapping("/hospedagem/{hospedagem}")
 	public ResponseEntity<List<Turismo>> getByHospedagem(@PathVariable String hospedagem){
 		return ResponseEntity.ok(repository.findAllByHospedagemContainingIgnoreCase(hospedagem));
 	}
 	
-	@GetMapping("/turismo/{atracao}")
+	@GetMapping("/atracao/{atracao}")
 	public ResponseEntity<List<Turismo>> getByAtracao(@PathVariable String atracao){
 		return ResponseEntity.ok(repository.findAllByAtracaoContainingIgnoreCase(atracao));
 	}
