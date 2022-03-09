@@ -31,7 +31,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/tipo") // Tipos de Turismo
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TiposController {
 	@Autowired
 	private TiposRepository repository;

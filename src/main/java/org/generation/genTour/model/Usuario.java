@@ -49,9 +49,9 @@ public class Usuario {
 	
 	private String tipo;
 
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-	@JsonIgnoreProperties
-	private List<Tipos> tipos;
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("usuario")
+	private List<Turismo> turismo;
 
 	public Usuario(long id, String nome, String email, String senha) {
 		this.id = id;
@@ -64,12 +64,12 @@ public class Usuario {
 	}
 
 
-	public List<Tipos> getTipos() {
-		return tipos;
+	public List<Turismo> getTurismo() {
+		return turismo;
 	}
 
-	public void setTipos(List<Tipos> tipos) {
-		this.tipos = tipos;
+	public void setTurismo(List<Turismo> turismo) {
+		this.turismo = turismo;
 	}
 
 	public long getId() {
