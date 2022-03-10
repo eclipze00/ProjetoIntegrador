@@ -51,7 +51,7 @@ public class TiposController {
 	}
 	
 	@GetMapping("/categoria/{categoria}") // Pesquisa por tipo 
-	public ResponseEntity<List<Tipos>> GetByTipoTurismo(@PathVariable String categoria){
+	public ResponseEntity<List<Tipos>> GetByCategoria(@PathVariable String categoria){
 		return ResponseEntity.ok(repository.findAllByCategoriaContainingIgnoreCase(categoria));
 	}
 	
@@ -61,14 +61,14 @@ public class TiposController {
 	}
 	
 	@GetMapping("/descricao/{descricao}") // Pesquisa por Temporada 
-	public ResponseEntity<List<Tipos>> GetByTemporada(@PathVariable String descricao){
+	public ResponseEntity<List<Tipos>> GetByDescricao(@PathVariable String descricao){
 		return ResponseEntity.ok(repository.findAllByDescricaoContainingIgnoreCase(descricao));
 	}
 
 	
 	@PostMapping("/save") // Adicionar novo tipo de Postagem
-	public ResponseEntity<Tipos> saveTipoTurismo(@RequestBody Tipos newTipos){
-		return ResponseEntity.status(201).body(repository.save(newTipos));
+	public ResponseEntity<Tipos> saveCategoria (@RequestBody Tipos newCategoria){
+		return ResponseEntity.status(201).body(repository.save(newCategoria));
 	}
 	
 	/*
@@ -78,8 +78,8 @@ public class TiposController {
 	  */
 	
 	@PutMapping("/update")
-	public ResponseEntity<Tipos> updateTipoTurismo (@RequestBody Tipos tipos){ 
-		return ResponseEntity.status(200).body(repository.save(tipos));
+	public ResponseEntity<Tipos> updateCategoria (@RequestBody Tipos categoria){ 
+		return ResponseEntity.status(200).body(repository.save(categoria));
 	}
  
 	@DeleteMapping("/{id}")
