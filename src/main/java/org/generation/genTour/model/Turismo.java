@@ -33,7 +33,7 @@ public class Turismo {
 	private String hospedagem;
 	
 	@NotBlank
-	@Size(min = 3, max = 300)
+	@Size(min = 3, max = 3000)
 	private String descricao;
 	
 	@NotBlank
