@@ -38,7 +38,7 @@ public class Tipos {
 	private String local;
 	
 	@NotBlank
-	@Size(min = 5, max = 100)
+	@Size(min = 5, max = 2000)
 	private String descricao;
 	
 	
