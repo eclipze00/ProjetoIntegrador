@@ -21,8 +21,7 @@ public interface TiposRepository extends JpaRepository<Tipos, Long> {
 	 * @since 26/01/2022
 	 * @version 0.03
 	 * 
-	 */
-	public List<Tipos> findAllByLocalContainingIgnoreCase(String local);		
+	 */	
 	
 	public List<Tipos> findAllByDescricaoContainingIgnoreCase(String descricao);
 

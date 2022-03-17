@@ -55,12 +55,8 @@ public class TiposController {
 		return ResponseEntity.ok(repository.findAllByCategoriaContainingIgnoreCase(categoria));
 	}
 	
-	@GetMapping("/local/{local}") // Pesquisa por Local
-	public ResponseEntity<List<Tipos>> GetByLocal(@PathVariable String local){
-		return ResponseEntity.ok(repository.findAllByLocalContainingIgnoreCase(local));
-	}
 	
-	@GetMapping("/descricao/{descricao}") // Pesquisa por Temporada 
+	@GetMapping("/descricao/{descricao}") // Pesquisa por descrição 
 	public ResponseEntity<List<Tipos>> GetByDescricao(@PathVariable String descricao){
 		return ResponseEntity.ok(repository.findAllByDescricaoContainingIgnoreCase(descricao));
 	}

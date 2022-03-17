@@ -34,8 +34,8 @@ public class Tipos {
 	private String categoria;
 	
 	@NotBlank
-	@Size(min = 5, max = 100)
-	private String local;
+	@Size(min = 5, max = 5000)
+	private String foto;
 	
 	@NotBlank
 	@Size(min = 5, max = 2000)
@@ -73,13 +73,17 @@ public class Tipos {
 		this.turismo = turismo;
 	}
 
-	public String getLocal() {
-		return local;
+	
+
+	public String getFoto() {
+		return foto;
 	}
 
-	public void setLocal(String local) {
-		this.local = local;
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
+
 
 	public String getDescricao() {
 		return descricao;
